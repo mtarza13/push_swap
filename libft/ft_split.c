@@ -1,98 +1,72 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 06:24:33 by mtarza            #+#    #+#             */
-/*   Updated: 2024/11/04 23:48:42 by mtarza           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
+#include <stdlib.h>
 
-static int	check_sep(char c, char sep)
+static size_t	count_words(const char *s)
 {
-	if (c == sep)
-		return (1);
-	return (0);
-}
+	size_t	count = 0;
+	size_t	i = 0;
 
-static int	count_words(char const *s, char sep)
-{
-	int	words;
-
-	words = 0;
-	while (*s)
+	while (s[i])
 	{
-		while (*s && check_sep(*s, sep))
-			s++;
-		if (*s)
-			words++;
-		while (*s && !check_sep(*s, sep))
-			s++;
+		while (s[i] == ' ' || s[i] == '\t')
+			i++;
+		if (s[i])
+		{
+			count++;
+			while (s[i] && s[i] != ' ' && s[i] != '\t')
+				i++;
+		}
 	}
-	return (words);
+	return (count);
 }
 
-static char	*word(const char *s, char sep)
+static size_t	ft_word_len(const char *s)
 {
-	int		i;
-	int		j;
-	char	*re;
+	size_t	len = 0;
 
-	i = 0;
-	j = 0;
-	while (s[j] && !check_sep(s[j], sep))
-		j++;
-	re = ft_calloc(j + 1, sizeof(char));
-	if (!re)
-		return (NULL);
-	while (i < j)
+	while (s[len] && s[len] != ' ' && s[len] != '\t')
+		len++;
+	return (len);
+}
+
+static void	*free_all(char **arr, size_t size)
+{
+	size_t	i = 0;
+
+	while (i < size)
 	{
-		re[i] = s[i];
+		free(arr[i]);
 		i++;
 	}
-	return (re);
-}
-
-static void	*ffree(char **re, int index)
-{
-	int	i;
-
-	i = 0;
-	while (i < index)
-		free(re[i++]);
-	free(re);
+	free(arr);
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(const char *s)
 {
-	char	**re;
-	char	*wrd;
-	int		i;
+	size_t	words;
+	char	**result;
+	size_t	i = 0;
+	size_t	word_len;
 
 	if (!s)
 		return (NULL);
-	i = 0;
-	re = ft_calloc((count_words(s, c)) + 1, sizeof(char *));
-	if (!re)
+	words = count_words(s);
+	result = malloc((words + 1) * sizeof(char *));
+	if (!result)
 		return (NULL);
-	while (*s)
+	while (i < words)
 	{
-		while (*s && check_sep(*s, c))
+		while (*s == ' ' || *s == '\t')
 			s++;
-		if (*s)
-		{
-			wrd = word(s, c);
-			if (!wrd)
-				return (ffree(re, i));
-			re[i++] = wrd;
-		}
-		while (*s && !check_sep(*s, c))
-			s++;
+		word_len = ft_word_len(s);
+		result[i] = malloc((word_len + 1) * sizeof(char));
+		if (!result[i])
+			return (free_all(result, i));
+		ft_strlcpy(result[i], s, word_len + 1);
+		s += word_len;
+		i++;
 	}
-	return (re);
+	result[i] = NULL;
+	return (result);
 }

@@ -11,16 +11,13 @@
 /* ************************************************************************** */
 #include "../../include/push_swap.h"
 
-void exit_error(t_stack_node **stack, char **split_args)
+void	exit_error(t_stack_node **stack_a)
 {
-    if (split_args)
-        free_split(split_args);  // Free split_args if allocated
-    if (stack && *stack)
-        free_stack(stack);       // Free the stack
-    ft_putstr_fd("Error\n", 2);
-    exit(EXIT_FAILURE);
+	if (stack_a && *stack_a)
+		free_stack(stack_a);
+	write(2, "Error\n", 6);
+	exit(1);
 }
-
 
 void	free_stack(t_stack_node **stack)
 {

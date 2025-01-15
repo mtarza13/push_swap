@@ -40,7 +40,6 @@ typedef struct s_stack_info
 }						t_stack_info;
 
 /* -------------------------- Movement Functions -------------------------- */
-void free_split(char **split);
 
 void					swap_a(t_stack_node **stack_a);
 void					swap_b(t_stack_node **stack_b);
@@ -66,7 +65,8 @@ int						lst_size(t_stack_node *head);
 void					free_stack(t_stack_node **stack);
 t_stack_node			*new_element(int value);
 void					print_stack(t_stack_node *stack, const char *name);
-void exit_error(t_stack_node **stack, char **split_args);
+void					exit_error(t_stack_node **stack_a);
+
 /* -------------------------- Input Handling -------------------------- */
 
 void					handle_input(t_stack_node **stack_a, char **argv,
