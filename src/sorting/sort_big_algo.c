@@ -41,27 +41,7 @@ void	move_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
 	}
 }
 
-void	push_to_a(t_stack_node **stack_a, t_stack_node **stack_b,
-		t_stack_node *target)
-{
-	int	position;
-	int	size;
 
-	position = pos_node(stack_b, target);
-	size = lst_size(*stack_b);
-	if (position <= size / 2)
-	{
-		while (position-- > 0)
-			rotate_b(stack_b);
-	}
-	else
-	{
-		position = size - position;
-		while (position-- > 0)
-			reverse_rotate_b(stack_b);
-	}
-	push_a(stack_a, stack_b);
-}
 
 void	move_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b)
 {
