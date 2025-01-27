@@ -74,6 +74,27 @@ void					reverse_rotate_b(t_stack_node **stack_b);
 void					reverse_rotate_both(t_stack_node **stack_a,
 							t_stack_node **stack_b);
 
+
+
+
+
+void					swap_a_bonus(t_stack_node **stack_a);
+void					swap_b_bonus(t_stack_node **stack_b);
+void					swap_both_bonus(t_stack_node **stack_a,
+							t_stack_node **stack_b);
+
+void					push_a_bonus(t_stack_node **stack_a, t_stack_node **stack_b);
+void					push_b_bonus(t_stack_node **stack_a, t_stack_node **stack_b);
+
+void					rotate_a_bonus(t_stack_node **stack_a);
+void					rotate_b_bonus(t_stack_node **stack_b);
+void					rotate_both_bonus(t_stack_node **stack_a,
+							t_stack_node **stack_b);
+
+void					reverse_rotate_a_bonus(t_stack_node **stack_a);
+void					reverse_rotate_b_bonus(t_stack_node **stack_b);
+void					reverse_rotate_both_bonus(t_stack_node **stack_a,
+							t_stack_node **stack_b);
 /* -------------------------- Utility Functions -------------------------- */
 
 int						lst_size(t_stack_node *head);

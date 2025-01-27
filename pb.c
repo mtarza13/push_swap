@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtarza <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 04:05:40 by mtarza            #+#    #+#             */
-/*   Updated: 2025/01/10 04:05:41 by mtarza           ###   ########.fr       */
+/*   Created: 2025/01/10 04:05:24 by mtarza            #+#    #+#             */
+/*   Updated: 2025/01/10 04:05:26 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_b(t_stack_node **stack)
+void	push_bonus(t_stack_node **from_stack, t_stack_node **to_stack)
 {
-	int	temp;
+	t_stack_node	*temp;
 
-	if (*stack && (*stack)->next)
+	if (*from_stack)
 	{
-		temp = (*stack)->value;
-		(*stack)->value = (*stack)->next->value;
-		(*stack)->next->value = temp;
+		temp = *from_stack;
+		*from_stack = (*from_stack)->next;
+		temp->next = *to_stack;
+		*to_stack = temp;
 	}
 }
 
-void	swap_a_b(t_stack_node **stack_a)
+void	push_a_bonus(t_stack_node **stack_a, t_stack_node **stack_b)
 {
-swap_b(stack_a);
+	push_bonus(stack_b, stack_a);
 
 }
 
-void	swap_b_b(t_stack_node **stack_b)
+void	push_b_bonus(t_stack_node **stack_a, t_stack_node **stack_b)
 {
-	swap_b(stack_b);
-
-}
-
-void	swap_both_b(t_stack_node **stack_a, t_stack_node **stack_b)
-{
-	swap_b(stack_a);
-	swap_b(stack_b);
+	push_bonus(stack_a, stack_b);
 
 }

@@ -24,16 +24,16 @@ CFLAGS      = -Wall -Wextra -Werror -g -O0
 HEADER      = push_swap.h
 
 # Common source files (shared between push_swap and checker)
-SRCS_COMMON = error_clean.c handle_input.c utils.c stack_index.c swap.c push.c  \
-             rotate.c   reverse_rotate.c chose_sorting.c sort_three.c sort_forth.c \
+SRCS_COMMON = error_clean.c handle_input.c utils.c stack_index.c swap.c push.c \
+             rotate.c reverse_rotate.c chose_sorting.c sort_three.c sort_forth.c \
              sort_five.c sort_big_algo.c help_function.c ft_split.c ft_strlcpy.c \
-              lib_src.c  
+            lib_src.c
 
 # Source files for push_swap (main executable)
 SRCS_PUSH_SWAP = main.c
 
 # Source files for checker (bonus executable)
-SRCS_CHECKER   = checker.c get_next_line.c get_next_line_utils.c swap_b.c push_b.c rotate_b.c reverse_rotate_b.c 
+SRCS_CHECKER   = checker.c get_next_line.c get_next_line_utils.c ss.c pb.c rb.c rrb.c 
 
 # Object files
 OBJS_COMMON    = $(SRCS_COMMON:.c=.o)

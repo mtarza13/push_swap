@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	rotate_b(t_stack_node **stack)
+void	rotate_bonus(t_stack_node **stack)
 {
 	t_stack_node	*temp;
 	t_stack_node	*tail;
@@ -29,21 +29,21 @@ void	rotate_b(t_stack_node **stack)
 	}
 }
 
-void	rotate_a_b(t_stack_node **stack_a)
+void	rotate_a_bonus(t_stack_node **stack_a)
 {
-	rotate_b(stack_a);
+	rotate_bonus(stack_a);
 
 }
 
-void	rotate_b_b(t_stack_node **stack_b)
+void	rotate_b_bonus(t_stack_node **stack_b)
 {
-	rotate_b(stack_b);
+	rotate_bonus(stack_b);
 
 }
 
-void	rotate_both_b(t_stack_node **stack_a, t_stack_node **stack_b)
+void	rotate_both_bonus(t_stack_node **stack_a, t_stack_node **stack_b)
 {
-	rotate_b(stack_a);
-	rotate_b(stack_b);
+	rotate_bonus(stack_a);
+	rotate_bonus(stack_b);
 
 }

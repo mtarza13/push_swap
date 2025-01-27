@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtarza <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/10 04:05:40 by mtarza            #+#    #+#             */
+/*   Updated: 2025/01/10 04:05:41 by mtarza           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+
 #include "push_swap.h"
 
 int	is_sorted_bonus(t_stack_node **stack_a)
@@ -17,27 +30,27 @@ int	is_sorted_bonus(t_stack_node **stack_a)
 int	checking_moves(t_stack_node **stack_a, t_stack_node **stack_b, char *line)
 {
 	if (ft_strcmp(line, "pb\n"))
-		push_b_b(stack_a, stack_b);
+		push_b_bonus(stack_a, stack_b);
 	else if (ft_strcmp(line, "pa\n"))
-		push_a_b(stack_a, stack_b);
+		push_a_bonus(stack_a, stack_b);
 	else if (ft_strcmp(line, "sa\n"))
-		swap_a_b(stack_a);
+		swap_a_bonus(stack_a);
 	else if (ft_strcmp(line, "sb\n"))
-		swap_b_b(stack_b);
+		swap_b_bonus(stack_b);
 	else if (ft_strcmp(line, "ss\n"))
-		swap_both_b(stack_a, stack_b);
+		swap_both_bonus(stack_a, stack_b);
 	else if (ft_strcmp(line, "rb\n"))
-		rotate_b_b(stack_b);
+		rotate_b_bonus(stack_b);
 	else if (ft_strcmp(line, "ra\n"))
-		rotate_a_b(stack_a);
+		rotate_a_bonus(stack_a);
 	else if (ft_strcmp(line, "rr\n"))
-		rotate_both_b(stack_a, stack_b);
+		rotate_both_bonus(stack_a, stack_b);
 	else if (ft_strcmp(line, "rrb\n"))
-		reverse_rotate_b_b(stack_b);
+		reverse_rotate_b_bonus(stack_b);
 	else if (ft_strcmp(line, "rra\n"))
-		reverse_rotate_a_b(stack_a);
+		reverse_rotate_a_bonus(stack_a);
 	else if (ft_strcmp(line, "rrr\n"))
-		reverse_rotate_both_b(stack_a, stack_b);
+		reverse_rotate_both_bonus(stack_a, stack_b);
 	else
 		return (1); // Invalid command
 	return (0); // Valid command
