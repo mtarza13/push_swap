@@ -55,30 +55,31 @@ void	checking_moves(t_stack_node **stack_a, t_stack_node **stack_b,
 		exit_error();
 }
 
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	t_stack_node	*stack_a;
-	t_stack_node	*stack_b;
-	char			*line;
-	int				size_stack;
+    t_stack_node *stack_a;
+    t_stack_node *stack_b;
+    char *line;
 
-	stack_b = NULL;
-	line = NULL;
-	stack_a = NULL;
-	handle_input(&stack_a, argv, argc);
-	size_stack = lst_size(stack_a);
-	if (size_stack == 0)
-		exit(0);
-	line = get_next_line(0);
-	while (line)
-	{
-		checking_moves(&stack_a, &stack_b, line);
-		free(line);
-		line = get_next_line(0);
-	}
-	if (is_sorted_bonus(&stack_a) && lst_size(stack_b) == 0)
-		ft_putstr_fd("ok\n", 1);
-	else
-		ft_putstr_fd("ko\n", 1);
-	return (0);
+    stack_a = NULL;
+    stack_b = NULL;
+    if (argc < 2)
+        return (0);
+    handle_input(&stack_a, argv, argc);
+    line = get_next_line(0);
+    while (line)
+    {
+        checking_moves(&stack_a, &stack_b, line);
+        free(line);
+        line = get_next_line(0);
+    }
+    if (is_sorted_bonus(&stack_a) && lst_size(stack_b) == 0)
+        ft_putstr_fd("OK\n", 1);
+    else
+        ft_putstr_fd("KO\n", 1);
+
+    // Free stacks before exiting
+    free_stack(&stack_a);
+    free_stack(&stack_b);
+    return (0);
 }

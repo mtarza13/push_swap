@@ -12,7 +12,9 @@
 
 #include "../../include/push_swap.h"
 
-void	check_data(t_stack_node *stack_a)
+void free_split();
+
+void	check_data( t_stack_node *stack_a)
 {
 	t_stack_node	*current;
 	t_stack_node	*checker;
@@ -23,8 +25,8 @@ void	check_data(t_stack_node *stack_a)
 		checker = current->next;
 		while (checker)
 		{
-			if (checker->value == current->value)
-				exit_error(&stack_a); 
+			if (checker->value == current->value)  
+				exit_error(&stack_a);  
 			checker = checker->next;
 		}
 		current = current->next;
@@ -42,26 +44,27 @@ void	add_to_stack(t_stack_node **stack, int value)
 	*stack = new_node;
 }
 
-void	create_new_element(char *str, t_stack_node **stack_a)
+int	create_new_element(char *str, t_stack_node **stack_a)
 {
 	long	value;
 	int		i;
 
 	if (!str || !str[0])
-		exit_error(stack_a);
+		return(1);
 	i = 0;
 	if ((str[i] == '+' || str[i] == '-') && str[i + 1])
 		i++;
 	while (str[i])
 	{
 		if (!ft_isdigit(str[i]))
-			exit_error(stack_a);
+			return(1);
 		i++;
 	}
 	value = ft_atol(str);
 	if (value > INT_MAX || value < INT_MIN)
-		exit_error(stack_a);
+		return (1);
 	add_to_stack(stack_a, (int)value);
+	return (0);
 }
 
 int	has_space(const char *str)
@@ -87,27 +90,31 @@ void	free_split(char **split)
 	free(split);
 }
 
-void	handle_input(t_stack_node **stack_a, char **argv, int argc)
+static void parsing_line(t_stack_node **stack_a , char *arg)
 {
-	int		index;
-	char	**split_args;
-
-	index = argc-1;
-	while (index > 0)
+	char **split_arg;
+	char **temp;
+	if(!has_space(arg))
 	{
-		if (has_space(argv[index]))
-		{
-			split_args = ft_split(argv[index], ' ');
-			if (!split_args)
-				exit_error(stack_a);
-			while (*split_args)
-				create_new_element(*split_args++, stack_a);
-			free_split(split_args);
-		}
-		else
-			create_new_element(argv[index], stack_a);
-		index--;
+		if(create_new_element(arg,stack_a) != 0) exit_error(stack_a);
 	}
-	check_data(*stack_a); 
-	create_index(*stack_a); 
+	else
+	{
+		if (!(split_arg = ft_split(arg)))  exit_error(stack_a);
+		temp = split_arg;
+		while(temp++) if(!(create_new_element(*split_arg, stack_a))) { free_split(split_arg); exit_error(stack_a);}
+		free_split(split_arg);
+	}
+}
+void handle_input(t_stack_node **stack_a, char *argv[], int argc)
+{
+    int index;
+    index = argc - 1;
+    while (index > 0)
+    {
+		parsing_line(stack_a,argv[index]);
+        index--;
+    }
+    check_data(*stack_a);
+    create_index(*stack_a);
 }

@@ -116,7 +116,7 @@ char	*get_next_line(int fd)
 	static struct s_v_list	*list = NULL;
 	char					*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	;if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	add_line_to_list(&list, fd);
 	if (!list)
@@ -127,3 +127,4 @@ char	*get_next_line(int fd)
 	next_line(&list);
 	return (line);
 }
+

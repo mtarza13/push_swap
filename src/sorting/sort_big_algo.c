@@ -12,6 +12,28 @@
 
 #include "../../include/push_swap.h"
 
+static int ft_sqrt(int size)
+{
+	if (size < 0 )
+		return (0);
+	int i;
+	i = 0;
+
+	while( i * i <=  size)
+	{
+		i++;
+	}
+	return (i - 1);
+}
+
+static int  static_chunk(int size)
+{
+	if(size <= 10)
+		return 1;
+	int a ;
+	a = ft_sqrt(size);
+	return (a);
+}
 void	move_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	int				i;
@@ -19,7 +41,7 @@ void	move_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
 	t_stack_node	*head;
 
 	i = 0;
-	chunk_size = lst_size(*stack_a) / 12;
+	chunk_size = static_chunk(lst_size(*stack_a));
 	while (*stack_a)
 	{
 		head = *stack_a;
@@ -36,6 +58,9 @@ void	move_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
 		}
 		else
 		{
+			if (*stack_a && (*stack_a)->index > i + chunk_size && *stack_b)
+                rotate_both(stack_a, stack_b); 
+			else
 			rotate_a(stack_a);
 		}
 	}
