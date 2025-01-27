@@ -1,21 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mtarza <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 04:03:42 by mtarza            #+#    #+#             */
-/*   Updated: 2025/01/12 01:27:00 by mtarza           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 
 # include <limits.h>
-# include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -122,7 +110,7 @@ void					sort_big_algo(t_stack_node **stack_a,
 void					choose_sorting(t_stack_node **stack_a,
 							t_stack_node **stack_b);
 
-
+//libft
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 int	ft_isdigit(int c);
 char	**ft_split(const char *s);

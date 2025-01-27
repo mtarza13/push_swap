@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mtarza <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/10 04:05:40 by mtarza            #+#    #+#             */
-/*   Updated: 2025/01/10 04:05:41 by mtarza           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -52,8 +40,8 @@ int	checking_moves(t_stack_node **stack_a, t_stack_node **stack_b, char *line)
 	else if (ft_strcmp(line, "rrr\n"))
 		reverse_rotate_both_bonus(stack_a, stack_b);
 	else
-		return (1); // Invalid command
-	return (0); // Valid command
+		return (1);
+	return (0);
 }
 
 int	main(int argc, char **argv)
