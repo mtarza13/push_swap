@@ -6,7 +6,7 @@
 /*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 04:04:51 by mtarza            #+#    #+#             */
-/*   Updated: 2025/01/28 11:48:34 by mtarza           ###   ########.fr       */
+/*   Updated: 2025/01/28 12:01:29 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,7 @@ static void	process_head(t_stack_node **stack_a, t_stack_node **stack_b, int *i,
 	}
 	else if (head->index <= *i + chunk_size)
 	{
-		if (*stack_a && head->index > *i + chunk_size)
-			reverse_rotate_both(stack_a, stack_b);
-		else
-			push_b(stack_a, stack_b);
+		push_b(stack_a, stack_b);
 		rotate_b(stack_b);
 		(*i)++;
 	}

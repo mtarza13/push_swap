@@ -6,7 +6,7 @@
 /*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 11:50:14 by mtarza            #+#    #+#             */
-/*   Updated: 2025/01/28 11:52:57 by mtarza           ###   ########.fr       */
+/*   Updated: 2025/01/28 11:59:03 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void					free_stack(t_stack_node **stack);
 t_stack_node			*new_element(int value);
 void					print_stack(t_stack_node *stack, const char *name);
 void					exit_error(t_stack_node **stack_a);
+int						static_chunk(int size);
 
 /* -------------------------- Input Handling -------------------------- */
 

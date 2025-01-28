@@ -6,7 +6,7 @@
 /*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:12:57 by mtarza            #+#    #+#             */
-/*   Updated: 2025/01/28 11:38:34 by mtarza           ###   ########.fr       */
+/*   Updated: 2025/01/28 11:58:16 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	free_split(char **split)
 	free(split);
 }
 
-static void	*free_all(char **arr, size_t size)
+void	*free_all(char **arr, size_t size)
 {
 	size_t	i;
 
