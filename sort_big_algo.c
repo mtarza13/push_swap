@@ -24,14 +24,14 @@ static void	process_head(t_stack_node **stack_a, t_stack_node **stack_b, int *i,
 		(*i)++;
 	}
 	else if (head->index <= *i + chunk_size)
-    {
-        push_b(stack_a, stack_b);
-        if ( *stack_a && (*stack_a)->index > *i + chunk_size)
-            rotate_both(stack_a,stack_b);
-        else
-            rotate_b(stack_b);
-        (*i)++;
-    }
+	{
+		push_b(stack_a, stack_b);
+		if (*stack_a && (*stack_a)->index > *i + chunk_size)
+			rotate_both(stack_a, stack_b);
+		else
+			rotate_b(stack_b);
+		(*i)++;
+	}
 	else
 		rotate_a(stack_a);
 }
