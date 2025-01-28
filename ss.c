@@ -32,7 +32,6 @@ void	swap_a_bonus(t_stack_node **stack_a)
 void	swap_b_bonus(t_stack_node **stack_b)
 {
 	swap_bonus(stack_b);
-	write(1, "sb\n", 3);
 }
 
 void	swap_both_bonus(t_stack_node **stack_a, t_stack_node **stack_b)

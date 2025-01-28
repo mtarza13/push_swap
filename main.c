@@ -34,7 +34,7 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2)
-		return (0);
+	    return 0;
 	handle_input(&stack_a, argv, argc);
 	if (is_sorted(stack_a))
 	{
