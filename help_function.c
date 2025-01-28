@@ -6,7 +6,7 @@
 /*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:11:09 by mtarza            #+#    #+#             */
-/*   Updated: 2025/01/28 11:35:28 by mtarza           ###   ########.fr       */
+/*   Updated: 2025/01/28 11:55:59 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,10 @@ int	pos_node(t_stack_node **stack, t_stack_node *target)
 	}
 	return (-1);
 }
+
 void	add_to_stack(t_stack_node **stack, int value)
 {
-	t_stack_node *new_node;
+	t_stack_node	*new_node;
 
 	new_node = new_element(value);
 	if (!new_node)

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/28 11:50:14 by mtarza            #+#    #+#             */
+/*   Updated: 2025/01/28 11:52:57 by mtarza           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -34,6 +45,7 @@ typedef struct s_stack_info
 	t_stack_node		*stack_a;
 	t_stack_node		*stack_b;
 }						t_stack_info;
+
 // get_next_line
 typedef struct s_v_list
 {
@@ -80,8 +92,9 @@ void					reverse_rotate_a_bonus(t_stack_node **stack_a);
 void					reverse_rotate_b_bonus(t_stack_node **stack_b);
 void					reverse_rotate_both_bonus(t_stack_node **stack_a,
 							t_stack_node **stack_b);
+
 /* -------------------------- Utility Functions -------------------------- */
-void	add_to_stack(t_stack_node **stack, int value);
+void					add_to_stack(t_stack_node **stack, int value);
 
 int						lst_size(t_stack_node *head);
 void					free_stack(t_stack_node **stack);
@@ -114,13 +127,14 @@ int						ft_isdigit(int c);
 char					**ft_split(const char *s);
 int						ft_strcmp(char *a, char *b);
 void					ft_putstr_fd(char *s, int fd);
-int	has_space(const char *str);
-static void	*free_all(char **arr, size_t size);
+int						has_space(const char *str);
+void					*free_all(char **arr, size_t size);
 
 t_stack_node			*big_node_of_stack(t_stack_node **stack);
 void					push_to_a(t_stack_node **stack_a,
 							t_stack_node **stack_b, t_stack_node *target);
-// -------------------------- Additional Helper Functions -----------------
+
+/* -------------- Additional Helper Functions -------------------------- */
 long					ft_atol(const char *str);
 int						my_strlen(char **argv);
 int						find_min_position(t_stack_node *stack_a);
@@ -128,9 +142,6 @@ void					move_to_top(t_stack_node **stack, int position);
 int						pos_node(t_stack_node **stack, t_stack_node *target);
 
 /* -------------------- String and GNL Functions -------------------------- */
-
-void					ft_putstr_fd(char *s, int fd);
-int						ft_strcmp(char *a, char *b);
 
 void					ft_lstclean_up(struct s_v_list **list,
 							struct s_v_list *new_node, char *new_data);

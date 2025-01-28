@@ -6,7 +6,7 @@
 /*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:12:34 by mtarza            #+#    #+#             */
-/*   Updated: 2025/01/28 11:36:41 by mtarza           ###   ########.fr       */
+/*   Updated: 2025/01/28 11:50:57 by mtarza           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,26 @@ int	has_space(const char *str)
 		str++;
 	}
 	return (0);
+}
+
+static int	ft_sqrt(int size)
+{
+	int	i;
+
+	if (size < 0)
+		return (0);
+	i = 0;
+	while (i * i <= size)
+		i++;
+	return (i - 1);
+}
+
+static int	static_chunk(int size)
+{
+	int	a;
+
+	if (size <= 10)
+		return (1);
+	a = ft_sqrt(size);
+	return (a);
 }
