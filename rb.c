@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rb.c                                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 23:12:10 by mtarza            #+#    #+#             */
+/*   Updated: 2025/01/27 23:12:11 by mtarza           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	rotate_bonus(t_stack_node **stack)
@@ -20,18 +32,15 @@ void	rotate_bonus(t_stack_node **stack)
 void	rotate_a_bonus(t_stack_node **stack_a)
 {
 	rotate_bonus(stack_a);
-
 }
 
 void	rotate_b_bonus(t_stack_node **stack_b)
 {
 	rotate_bonus(stack_b);
-
 }
 
 void	rotate_both_bonus(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	rotate_bonus(stack_a);
 	rotate_bonus(stack_b);
-
 }

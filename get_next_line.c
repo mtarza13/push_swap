@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 23:12:44 by mtarza            #+#    #+#             */
+/*   Updated: 2025/01/27 23:13:51 by mtarza           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	add_line_to_list(struct s_v_list **list, int fd)
@@ -104,7 +116,7 @@ char	*get_next_line(int fd)
 	static struct s_v_list	*list = NULL;
 	char					*line;
 
-	;if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	add_line_to_list(&list, fd);
 	if (!list)
@@ -115,4 +127,3 @@ char	*get_next_line(int fd)
 	next_line(&list);
 	return (line);
 }
-

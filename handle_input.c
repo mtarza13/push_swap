@@ -1,16 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_input.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/28 11:29:58 by mtarza            #+#    #+#             */
+/*   Updated: 2025/01/28 11:35:21 by mtarza           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-void	free_split(char **split)
-{
-	int	i;
-
-	if (!split)
-		return ;
-	i = 0;
-	while (split[i])
-		free(split[i++]);
-	free(split);
-}
 
 void	check_data(t_stack_node *stack_a)
 {
@@ -29,17 +29,6 @@ void	check_data(t_stack_node *stack_a)
 		}
 		current = current->next;
 	}
-}
-
-void	add_to_stack(t_stack_node **stack, int value)
-{
-	t_stack_node	*new_node;
-
-	new_node = new_element(value);
-	if (!new_node)
-		exit_error(stack);
-	new_node->next = *stack;
-	*stack = new_node;
 }
 
 int	create_new_element(char *str, t_stack_node **stack_a)
@@ -65,32 +54,11 @@ int	create_new_element(char *str, t_stack_node **stack_a)
 	return (0);
 }
 
-int	has_space(const char *str)
+static int	handle_splitted_args(t_stack_node **stack_a, char **split_arg)
 {
-	while (*str)
-	{
-		if (*str == ' ' || *str == '\t')
-			return (1);
-		str++;
-	}
-	return (0);
-}
+	int	count;
+	int	i;
 
-static void	parsing_line(t_stack_node **stack_a, char *arg)
-{
-	char	**split_arg;
-	int		count;
-	int		i;
-
-	if (!has_space(arg))
-	{
-		if (create_new_element(arg, stack_a) != 0)
-			exit_error(stack_a);
-		return ;
-	}
-	split_arg = ft_split(arg);
-	if (!split_arg)
-		exit_error(stack_a);
 	count = 0;
 	while (split_arg[count])
 		count++;
@@ -104,6 +72,24 @@ static void	parsing_line(t_stack_node **stack_a, char *arg)
 		}
 		i--;
 	}
+	return (0);
+}
+
+static void	parse_and_add_to_stack(t_stack_node **stack_a, char *arg)
+{
+	char	**split_arg;
+
+	if (!has_space(arg))
+	{
+		if (create_new_element(arg, stack_a) != 0)
+			exit_error(stack_a);
+		return ;
+	}
+	split_arg = ft_split(arg);
+	if (!split_arg)
+		exit_error(stack_a);
+	if (handle_splitted_args(stack_a, split_arg) != 0)
+		exit_error(stack_a);
 	free_split(split_arg);
 }
 
@@ -114,7 +100,7 @@ void	handle_input(t_stack_node **stack_a, char *argv[], int argc)
 	index = argc - 1;
 	while (index > 0)
 	{
-		parsing_line(stack_a, argv[index]);
+		parse_and_add_to_stack(stack_a, argv[index]);
 		index--;
 	}
 	check_data(*stack_a);

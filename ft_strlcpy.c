@@ -1,17 +1,34 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtarza <mtarza@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 23:12:51 by mtarza            #+#    #+#             */
+/*   Updated: 2025/01/27 23:14:31 by mtarza           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-int ft_strlen(const char *s)
+
+int	ft_strlen(const char *s)
 {
-	int i = 0;
-	while(s[i])
-	i++;
-	return i;
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
+
 int	ft_isdigit(int c)
 {
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
 }
+
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;

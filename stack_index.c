@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 void	swap_stack_clone(t_stack_node *stack_a, t_stack_info *list, int temp)
 {
 	int	i;
