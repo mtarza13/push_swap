@@ -36,7 +36,7 @@ static void	process_head(t_stack_node **stack_a, t_stack_node **stack_b, int *i,
 		rotate_a(stack_a);
 }
 
-void	move_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
+static void	move_to_b(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	int	i;
 	int	chunk_size;
@@ -69,7 +69,7 @@ static void	bring_big_to_top(t_stack_node **stack_b)
 	}
 }
 
-void	move_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b)
+static void	move_b_to_a(t_stack_node **stack_a, t_stack_node **stack_b)
 {
 	while (*stack_b)
 	{

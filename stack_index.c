@@ -65,6 +65,8 @@ void	create_index(t_stack_node *stack_a)
 	t_stack_info	*list;
 
 	list = malloc(sizeof(t_stack_info));
+	if (!list)
+		return ;
 	sorting_stack_clone(stack_a, list);
 	head = stack_a;
 	len_stack = lst_size(stack_a);
